@@ -71,7 +71,7 @@ class MainActivity : AppCompatActivity() {
         val credential = GoogleAuthProvider.getCredential(account.idToken,null)
         auth.signInWithCredential(credential).addOnCompleteListener{
             if (it.isSuccessful){
-                val intent = Intent(this,UserProfile::class.java)
+                val intent = Intent(this,Home::class.java)
                 intent.putExtra("email",account.email)
                 intent.putExtra("name",account.displayName)
                 startActivity(intent)

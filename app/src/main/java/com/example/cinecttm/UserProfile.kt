@@ -15,7 +15,6 @@ class UserProfile : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_profile)
 
-
         auth= FirebaseAuth.getInstance()
 
         val name = intent.getStringExtra("name")

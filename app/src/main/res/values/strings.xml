@@ -14,4 +14,7 @@
     <string name="or_login_with">or login with</string>
     <string name="tusername">Username</string>
     <string name="ppassword">Password</string>
+    <string name="navigation_drawer_open">Open</string>
+    <string name="navigation_drawer_close">Close</string>
+
 </resources>
