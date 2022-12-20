@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">CinectTM</string>
+    <string name="userage">UserAge</string>
+    <string name="movie_genres">Movie genres</string>
+    <string name="usergenres">UserGenres</string>
+    <string name="username">UserName</string>
+    <string name="age">Age</string>
+    <string name="name">Name</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="txtusername">UserName</string>
+    <string name="create_account">Create Account</string>
+    <string name="todo">TODO</string>
+    <string name="or_login_with">or login with</string>
+    <string name="tusername">Username</string>
+    <string name="ppassword">Password</string>
+</resources>

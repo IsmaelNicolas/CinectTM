@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "982000979469",
+    "project_id": "cinect-372019",
+    "storage_bucket": "cinect-372019.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:982000979469:android:e73f77d56ef2a5af5a8f44",
+        "android_client_info": {
+          "package_name": "com.example.cinecttm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "982000979469-sum0fq2vr0go5ong09r4okmpg7vpaql6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.cinecttm",
+            "certificate_hash": "7cfd6eedfd3031cff45a788937e3051e25a0235f"
+          }
+        },
+        {
+          "client_id": "982000979469-dat0tbn1vrctrf10mjhg9oej39dv541p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9Qa1k73FpdytLusUvd1DqlbPt76OC8-4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "982000979469-dat0tbn1vrctrf10mjhg9oej39dv541p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
