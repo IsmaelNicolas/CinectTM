@@ -1,15 +1,17 @@
 package com.example.cinecttm
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
+import androidx.core.app.NotificationCompat
 import android.content.Intent
 import android.content.res.Configuration
+import android.graphics.BitmapFactory
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Gravity
 import android.view.MenuItem
-import android.widget.TextView
 import android.widget.Toast
-import android.widget.Toolbar
-import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -29,6 +31,7 @@ class Home : AppCompatActivity(),NavigationView.OnNavigationItemSelectedListener
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
+        createNotification()
 
         val toolbar: androidx.appcompat.widget.Toolbar =findViewById(R.id.toolbar_main)
         setSupportActionBar(toolbar)
@@ -46,7 +49,27 @@ class Home : AppCompatActivity(),NavigationView.OnNavigationItemSelectedListener
         navigationView.setNavigationItemSelectedListener(this)
 
 
+    }
 
+    fun createNotification(){
+        val notificationManager = this.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        // Crear un canal de notificación si es necesario
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channel = NotificationChannel("channel_id", "channel_name", NotificationManager.IMPORTANCE_DEFAULT)
+            notificationManager.createNotificationChannel(channel)
+        }
+
+        val largeIcon = BitmapFactory.decodeResource(this.resources, R.drawable.bitmap)
+
+        val builder = NotificationCompat.Builder(this, "channel_id")
+            .setSmallIcon(R.drawable.bitmap)
+            .setContentTitle("Cinect te recomienda")
+            .setContentText("Piratas del caribe")
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
+            .setLargeIcon(largeIcon)
+
+        val notification = builder.build()
+        notificationManager.notify(1, notification)
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {

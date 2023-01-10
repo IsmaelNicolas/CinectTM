@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 
 class UserProfile : AppCompatActivity() {
 
@@ -23,6 +25,9 @@ class UserProfile : AppCompatActivity() {
 
         findViewById<Button>(R.id.btnLogOut).setOnClickListener{
             auth.signOut()
+            val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build()
+            val googleSignInClient = GoogleSignIn.getClient(this, gso)
+            googleSignInClient.revokeAccess()
             startActivity(Intent(this,MainActivity::class.java))
             finish()
         }
