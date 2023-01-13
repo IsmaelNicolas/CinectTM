@@ -15,6 +15,8 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 
@@ -51,7 +53,7 @@ class Home : AppCompatActivity(),NavigationView.OnNavigationItemSelectedListener
 
     }
 
-    fun createNotification(){
+    private fun createNotification(){
         val notificationManager = this.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         // Crear un canal de notificación si es necesario
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -74,7 +76,10 @@ class Home : AppCompatActivity(),NavigationView.OnNavigationItemSelectedListener
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId){
-            R.id.nav_item_one -> Toast.makeText(this,"Home",Toast.LENGTH_LONG).show()
+            R.id.nav_item_one -> {
+                Toast.makeText(this,"Home",Toast.LENGTH_LONG).show()
+                val i = Intent(this,Home::class.java)
+            }
             R.id.nav_item_two -> {
                 val intentt = Intent(this,UserProfile::class.java)
                 intentt.putExtra("email",intent.getStringExtra("email"))
@@ -85,6 +90,11 @@ class Home : AppCompatActivity(),NavigationView.OnNavigationItemSelectedListener
             R.id.nav_item_four -> {
                 auth = FirebaseAuth.getInstance()
                 auth.signOut()
+                val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build()
+                val googleSignInClient = GoogleSignIn.getClient(this, gso)
+                googleSignInClient.revokeAccess()
+                startActivity(Intent(this,MainActivity::class.java))
+                finish()
             }
         }
 

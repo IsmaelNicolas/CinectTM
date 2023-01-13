@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -38,6 +39,12 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<ImageButton>(R.id.sign_in_button).setOnClickListener{
             googleAtuh()
+        }
+
+        val btn = findViewById<TextView>(R.id.lblCrateCoount)
+        btn.setOnClickListener {
+            val intent = Intent(this,CreateAccount::class.java)
+            startActivity(intent)
         }
 
     }

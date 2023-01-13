@@ -14,6 +14,8 @@ class UserProfile : AppCompatActivity() {
     private lateinit var auth : FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.Theme_CinectTM_AppBar)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_profile)
 
