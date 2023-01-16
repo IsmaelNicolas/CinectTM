@@ -1,8 +1,9 @@
 package com.example.cinecttm
 
+import info.movito.themoviedbapi.TmdbApi
+import org.junit.Assert.assertEquals
 import org.junit.Test
 
-import org.junit.Assert.*
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -12,6 +13,9 @@ import org.junit.Assert.*
 class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
+        val movies = TmdbApi("8c769cd2a5a59a1b3db0651f411c833c").movies
+        val movie = movies.getMovie(550, "en")
+        print(movie.title)
+        assertEquals("Fight Club", movie.title)
     }
 }
