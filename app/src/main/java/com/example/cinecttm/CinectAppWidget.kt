@@ -6,9 +6,13 @@ import android.appwidget.AppWidgetProvider
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
-import android.util.Log
+import android.os.AsyncTask
 import android.widget.RemoteViews
+import java.net.HttpURLConnection
+import org.json.JSONObject
+import java.net.URL
 import java.util.*
+
 
 //import info.movito.themoviedbapi.TmdbApi
 
@@ -40,19 +44,40 @@ class CinectAppWidget : AppWidgetProvider() {
 
     override fun onReceive(context: Context?, intent: Intent?) {
         super.onReceive(context, intent)
-        val random = Random()
-        val randomNumber = random.nextInt(1000) + 1
-
         if (context != null && intent != null && AppWidgetManager.ACTION_APPWIDGET_UPDATE == intent.action) {
             val appWidgetManager = AppWidgetManager.getInstance(context)
             val appWidgetIds = appWidgetManager.getAppWidgetIds(ComponentName(context, CinectAppWidget::class.java))
-
-            // Update the text view
             val views = RemoteViews(context.packageName, R.layout.cinect_app_widget)
-            views.setTextViewText(R.id.RandomMovie, randomNumber.toString())
 
-            // Update the widget
-            appWidgetManager.updateAppWidget(appWidgetIds, views)
+            // Start the AsyncTask
+            val task = GetMovieTask(context, views, appWidgetManager, appWidgetIds)
+            task.execute()
+        }
+    }
+
+    class GetMovieTask(private val context: Context,
+                       private val views: RemoteViews,
+                       private val appWidgetManager: AppWidgetManager,
+                       private val appWidgetIds: IntArray) : AsyncTask<Void, Void, String>() {
+
+        override fun doInBackground(vararg params: Void?): String {
+            val random = Random()
+            val randomNumber = random.nextInt(738) + 62
+            val url = URL("https://api.themoviedb.org/3/movie/"+randomNumber+"?api_key=8c769cd2a5a59a1b3db0651f411c833c")
+            val connection = url.openConnection() as HttpURLConnection
+            connection.requestMethod = "GET"
+
+            val inputStream = connection.inputStream
+            val response = inputStream.bufferedReader().use { it.readText() }
+            return JSONObject(response).getString("title")
+        }
+
+        override fun onPostExecute(title: String?) {
+            super.onPostExecute(title)
+            if (title != null) {
+                views.setTextViewText(R.id.RandomMovie, title)
+                appWidgetManager.updateAppWidget(appWidgetIds, views)
+            }
         }
     }
 
