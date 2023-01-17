@@ -15,10 +15,12 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import com.example.cinecttm.models.UserModel
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.gson.Gson
 
 class Home : AppCompatActivity(),NavigationView.OnNavigationItemSelectedListener {
 
@@ -81,10 +83,16 @@ class Home : AppCompatActivity(),NavigationView.OnNavigationItemSelectedListener
                 val i = Intent(this,Home::class.java)
             }
             R.id.nav_item_two -> {
-                val intentt = Intent(this,UserProfile::class.java)
-                intentt.putExtra("email",intent.getStringExtra("email"))
-                intentt.putExtra("name",intent.getStringExtra("name"))
-                startActivity(intentt)
+                val gson = Gson()
+                val username = intent.getStringExtra("user")
+                val joined = intent.getStringExtra("joined")
+                val email = intent.getStringExtra("email")
+                val intent = Intent(this,UserProfile::class.java)
+                intent.putExtra("user",username)
+                intent.putExtra("joined",joined)
+                intent.putExtra("email",email)
+                startActivity(intent)
+                finish()
             }
             R.id.nav_item_three -> Toast.makeText(this,"Stadistics",Toast.LENGTH_LONG).show()
             R.id.nav_item_four -> {
@@ -93,6 +101,12 @@ class Home : AppCompatActivity(),NavigationView.OnNavigationItemSelectedListener
                 val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build()
                 val googleSignInClient = GoogleSignIn.getClient(this, gso)
                 googleSignInClient.revokeAccess()
+
+                val prefs = getSharedPreferences("session_prefs", Context.MODE_PRIVATE)
+                val editor = prefs.edit()
+                editor.putBoolean("is_logged_in",false)
+                editor.apply()
+
                 startActivity(Intent(this,MainActivity::class.java))
                 finish()
             }

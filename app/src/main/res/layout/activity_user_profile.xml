@@ -9,10 +9,10 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginEnd="64dp"
+        android:layout_width="290dp"
+        android:layout_height="300dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/lblName"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,7 +24,6 @@
             android:id="@+id/imageView2"
             android:layout_width="wrap_content"
             android:layout_height="299dp"
-
             app:shapeAppearanceOverlay="@style/circular"
             app:srcCompat="@drawable/cdp"
             app:strokeColor="@color/colorSecondary"
@@ -40,7 +39,7 @@
         android:layout_marginEnd="64dp"
         android:text="Name"
         android:textColor="@color/colorSecondary"
-        android:textSize="24sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/txtName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -56,7 +55,7 @@
         android:layout_marginEnd="64dp"
         android:text="Ismael Cedillo"
         android:textColor="@color/white"
-        android:textSize="28sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/tableLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -95,7 +94,7 @@
                     android:layout_height="wrap_content"
                     android:text="Age"
                     android:textColor="@color/colorSecondary"
-                    android:textSize="24sp" />
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/txtAge"
@@ -103,7 +102,7 @@
                     android:layout_height="wrap_content"
                     android:text="21"
                     android:textColor="@color/white"
-                    android:textSize="28sp" />
+                    android:textSize="24sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -119,7 +118,7 @@
                     android:layout_height="wrap_content"
                     android:text="Joined"
                     android:textColor="@color/colorSecondary"
-                    android:textSize="24sp" />
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/txtJoined"
@@ -127,7 +126,7 @@
                     android:layout_height="wrap_content"
                     android:text="12/12/2022"
                     android:textColor="@color/white"
-                    android:textSize="28sp" />
+                    android:textSize="24sp" />
             </LinearLayout>
 
         </TableRow>
@@ -147,12 +146,14 @@
         android:textColor="@color/colorSecondary"
         android:textColorHighlight="@color/bcolorPrimaryVariant"
         android:textColorLink="@color/colorPrimary"
-        android:textSize="24sp"
+        android:textOff="Off"
+        android:textOn="On"
+        android:textSize="16sp"
         android:thumbTint="@color/colorSecondary"
         android:trackTint="@color/colorSecondaryVariant"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tableLayout"
         app:layout_constraintVertical_bias="0.5" />
@@ -178,7 +179,9 @@
             android:layout_weight="1"
             android:background="@drawable/custom_button"
             android:text="Log out"
-            android:textColor="@color/white" />
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
 
         <Space
             android:layout_width="wrap_content"
@@ -192,7 +195,9 @@
             android:layout_weight="1"
             android:background="@drawable/custom_button"
             android:text="Genres"
-            android:textColor="@color/white" />
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
     </LinearLayout>
 
 

@@ -24,15 +24,13 @@ class CreateAccount : AppCompatActivity() {
             val txtName = findViewById<TextView>(R.id.txtNameAdd)
             val txtpass = findViewById<TextView>(R.id.txtPassAdd)
             val txtemail = findViewById<TextView>(R.id.txtemailAdd)
+
             if (txtName.text.toString() != "" && txtpass.text.toString() != "" && txtemail.text.toString() != ""){
                 createPopMenu(btnCreateAccount)
             }   else{
                 Toast.makeText(this, "Complete all fields", Toast.LENGTH_SHORT).show()
             }
-
         }
-
-
 
     }
 
@@ -47,6 +45,7 @@ class CreateAccount : AppCompatActivity() {
                     startActivity(intent)
                 }
                 R.id.menu_item1 ->
+
                     Toast.makeText(this@CreateAccount, "You Clicked : " + item.title, Toast.LENGTH_SHORT).show()
             }
             true
